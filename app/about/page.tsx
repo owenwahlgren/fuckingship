@@ -1,4 +1,22 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'About - fuckingship',
+  description: 'Private Avalanche builders who ship weekly, publicly, on mainnet. No grants. No BS.',
+  openGraph: {
+    title: 'About fuckingship',
+    description: 'Private Avalanche builders who ship weekly, publicly, on mainnet. No grants. No BS.',
+    url: 'https://fuckingship.org/about',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About fuckingship',
+    description: 'Private Avalanche builders who ship weekly, publicly, on mainnet. No grants. No BS.',
+    creator: '@freakingship',
+  },
+}
 
 export default function About() {
   return (

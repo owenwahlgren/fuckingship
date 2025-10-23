@@ -14,6 +14,20 @@ export const metadata: Metadata = {
       },
     ],
   },
+  openGraph: {
+    title: 'f🔻ckingship',
+    description: 'Private builder community. Ship weekly or leave.',
+    url: 'https://fuckingship.org',
+    siteName: 'f🔻ckingship',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'f🔻ckingship',
+    description: 'Private builder community. Ship weekly or leave.',
+    creator: '@freakingship',
+  },
 }
 
 export default function RootLayout({
