@@ -16,7 +16,6 @@ export default async function Image() {
           height: '100%',
           width: '100%',
           display: 'flex',
-          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
           backgroundColor: 'white',
@@ -24,19 +23,16 @@ export default async function Image() {
       >
         <div
           style={{
-            fontSize: 140,
-            fontWeight: 'bold',
+            fontSize: 120,
+            fontWeight: 700,
             color: 'black',
-            letterSpacing: '-0.02em',
           }}
         >
           f🔻ckingship
         </div>
       </div>
     ),
-    {
-      ...size,
-    }
+    size
   )
 }
 

@@ -17,7 +17,6 @@ export default async function Image() {
           width: '100%',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'flex-start',
           justifyContent: 'center',
           backgroundColor: 'white',
           padding: '100px',
@@ -25,51 +24,44 @@ export default async function Image() {
       >
         <div
           style={{
-            fontSize: 80,
-            fontWeight: 'bold',
+            fontSize: 72,
+            fontWeight: 700,
             color: 'black',
             marginBottom: 24,
-            letterSpacing: '-0.02em',
           }}
         >
-          fuckingship
+          f🔻ckingship
         </div>
         <div
           style={{
             height: 4,
             width: 96,
             backgroundColor: '#E84142',
-            marginBottom: 60,
+            marginBottom: 48,
           }}
         />
         <div
           style={{
-            fontSize: 42,
+            fontSize: 38,
             color: 'black',
             lineHeight: 1.4,
-            maxWidth: 1000,
-            marginBottom: 48,
           }}
         >
-          We're a private, no-BS cell of Avalanche builders who ship.
-          <br />
-          Weekly. Publicly. On mainnet.
+          Private builder chat. Ship weekly or leave.
         </div>
         <div
           style={{
-            fontSize: 36,
-            color: 'black',
+            fontSize: 34,
+            color: '#666',
+            marginTop: 32,
             fontWeight: 600,
-            lineHeight: 1.3,
           }}
         >
           No "founders." No stealth. No decks. No grant beggars.
         </div>
       </div>
     ),
-    {
-      ...size,
-    }
+    size
   )
 }
 
