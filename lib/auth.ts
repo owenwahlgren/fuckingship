@@ -16,13 +16,19 @@ export const authConfig = {
     Twitter({
       clientId: process.env.TWITTER_CLIENT_ID!,
       clientSecret: process.env.TWITTER_CLIENT_SECRET!,
+      version: "2.0",
+      authorization: {
+        params: {
+          scope: "users.read offline.access",
+        },
+      },
       profile(profile) {
         console.log('Raw Twitter profile:', JSON.stringify(profile, null, 2))
         
         // Handle error responses from Twitter
         if ((profile as any).status === 429 || (profile as any).title === "Too Many Requests") {
-          console.error('Twitter rate limit error')
-          throw new Error('Twitter is rate limiting requests. Please wait a few minutes and try again.')
+          console.error('Twitter rate limit error - Check your Twitter app settings')
+          throw new Error('Twitter authentication temporarily unavailable. Please try again later or contact support.')
         }
         
         return {
@@ -193,6 +199,8 @@ export const authConfig = {
   },
   session: {
     strategy: "jwt",
+    maxAge: 30 * 24 * 60 * 60, // 30 days
+    updateAge: 24 * 60 * 60, // Update every 24 hours
   },
 } satisfies NextAuthConfig
 
