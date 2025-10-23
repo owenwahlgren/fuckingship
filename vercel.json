@@ -2,17 +2,6 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
-  "installCommand": "npm install",
-  "env": {
-    "DATABASE_URL": "@database_url",
-    "TWITTER_CLIENT_ID": "@twitter_client_id",
-    "TWITTER_CLIENT_SECRET": "@twitter_client_secret",
-    "GITHUB_ID": "@github_id",
-    "GITHUB_SECRET": "@github_secret",
-    "NEXTAUTH_SECRET": "@nextauth_secret",
-    "NEXTAUTH_URL": "@nextauth_url",
-    "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "@turnstile_site_key",
-    "TURNSTILE_SECRET_KEY": "@turnstile_secret_key"
-  }
+  "installCommand": "npm install"
 }
 
