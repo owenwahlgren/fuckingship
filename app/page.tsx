@@ -28,6 +28,12 @@ export default function Home() {
         if (sessionRefresh.ok) {
           const freshData = await sessionRefresh.json()
           setUser(freshData)
+          
+          // If admin with Twitter, redirect to admin (GitHub not required for admins)
+          if (freshData.role === 'ADMIN' && freshData.hasTwitter) {
+            router.push('/admin')
+            return
+          }
         }
       } catch (error) {
         console.error('Error checking session:', error)
@@ -60,6 +66,19 @@ export default function Home() {
       {/* Main Content - Centered */}
       <div className="flex-1 flex flex-col items-center justify-center p-6">
         <div className="max-w-lg w-full space-y-12">
+          {/* Sign Out - Top Right (only if logged in) */}
+          {user && (
+            <div className="flex justify-end -mt-6 mb-6">
+              <Button 
+                variant="outline" 
+                onClick={() => window.location.href = '/api/signout'}
+                className="text-xs sm:text-sm px-3 sm:px-4"
+              >
+                Sign Out
+              </Button>
+            </div>
+          )}
+
           {/* Brand */}
           <div className="text-center space-y-6">
             <h1 className="text-6xl font-bold text-black tracking-tight leading-tight">

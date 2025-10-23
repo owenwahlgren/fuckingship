@@ -12,6 +12,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Check if user has both Twitter and GitHub connected - verify from database
+    // (Admins don't need GitHub to access the site, but do need it to submit)
     const user = await prisma.user.findUnique({
       where: { id: session.user.id },
       include: {
@@ -30,9 +31,10 @@ export async function POST(req: NextRequest) {
     const hasTwitter = user.accounts.some(a => a.provider === 'twitter')
     const hasGithub = user.accounts.some(a => a.provider === 'github')
 
+    // All users (including admins) need both accounts to submit applications
     if (!hasTwitter || !hasGithub) {
       return NextResponse.json(
-        { error: 'Please connect both Twitter and GitHub accounts' },
+        { error: 'Please connect both X and GitHub accounts to submit an application' },
         { status: 400 }
       )
     }
