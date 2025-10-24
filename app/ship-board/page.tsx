@@ -93,7 +93,7 @@ export default function ShipBoard() {
                           @chrisfusillo
                         </a>
                       </p>
-                      <p className="text-sm text-black/60">Track: Chase degen/viral narratives • Streak: 🔥 5</p>
+                      <p className="text-sm text-black/60">Track: Novel app with Avalanche tech • Streak: 🔥 5</p>
                     </div>
                     <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded">SHIPPED</span>
                   </div>
@@ -198,7 +198,7 @@ export default function ShipBoard() {
                           @0xMoonbags
                         </a>
                       </p>
-                      <p className="text-sm text-black/60">Track: Novel app with Avalanche tech • Streak: 🔥 4</p>
+                      <p className="text-sm text-black/60">Track: Chase degen/viral narratives • Streak: 🔥 4</p>
                     </div>
                     <span className="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded">SHIPPED</span>
                   </div>
