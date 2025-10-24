@@ -294,7 +294,6 @@ export default function About() {
                   <p className="font-semibold text-lg text-black mb-2">Instant bans:</p>
                   <ul className="space-y-2 text-base text-black/90">
                     <li className="leading-relaxed">You talk shit about the community or the program instead of helping each other</li>
-                    <li className="leading-relaxed">You only shill your own project</li>
                     <li className="leading-relaxed">You only complain about factors outside of your control</li>
                     <li className="leading-relaxed">You make deceptive security claims about your own project</li>
                   </ul>
