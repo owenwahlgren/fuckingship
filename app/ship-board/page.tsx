@@ -55,7 +55,7 @@ export default function ShipBoard() {
               Track who's shipping what, weekly.
             </p>
             <p className="text-lg text-black/70 leading-relaxed">
-              Public accountability. Every member posts their ship every two weeks with proof: URL, demo, contract address, or merged PR.
+              Public accountability. Every member posts their ship every week with proof: URL, demo, contract address, or merged PR.
             </p>
           </div>
 
