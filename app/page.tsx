@@ -161,6 +161,13 @@ export default function Home() {
         </a>
         <span className="text-xs text-black/20">•</span>
         <Link 
+          href="/ship-board"
+          className="text-xs text-black/40 hover:text-black/60 underline transition-colors"
+        >
+          Ship Board
+        </Link>
+        <span className="text-xs text-black/20">•</span>
+        <Link 
           href="/disclaimer"
           className="text-xs text-black/40 hover:text-black/60 underline transition-colors"
         >

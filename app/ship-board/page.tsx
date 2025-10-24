@@ -40,8 +40,8 @@ export default function ShipBoard() {
       <div className="max-w-6xl mx-auto px-6 py-16">
         {/* Header */}
         <div className="mb-16">
-          <Link href="/about" className="text-sm text-black/60 hover:text-black mb-4 inline-block">
-            ← Back to About
+          <Link href="/" className="text-sm text-black/60 hover:text-black mb-4 inline-block">
+            ← Back
           </Link>
           <h1 className="text-6xl font-bold text-black mb-4 tracking-tight">Ship Board</h1>
           <div className="h-1 w-24 bg-[#E84142]"></div>

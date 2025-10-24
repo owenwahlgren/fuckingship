@@ -432,7 +432,14 @@ export default function About() {
                   Apply Now
                 </Link>
               </div>
-              <div className="mt-8 pt-8 border-t border-gray-200">
+              <div className="mt-8 pt-8 border-t border-gray-200 flex items-center justify-center gap-4">
+                <Link
+                  href="/ship-board"
+                  className="text-sm text-black/50 hover:text-black underline transition-colors"
+                >
+                  Ship Board
+                </Link>
+                <span className="text-sm text-black/30">•</span>
                 <Link
                   href="/disclaimer"
                   className="text-sm text-black/50 hover:text-black underline transition-colors"
