@@ -36,12 +36,17 @@ export const authConfig = {
     GitHub({
       clientId: process.env.GITHUB_ID!,
       clientSecret: process.env.GITHUB_SECRET!,
+      authorization: {
+        params: {
+          scope: "read:user"
+        }
+      },
       profile(profile) {
         console.log('Raw GitHub profile:', JSON.stringify(profile, null, 2))
         return {
           id: profile.id.toString(),
           name: profile.login || profile.name,
-          email: profile.email,
+          email: profile.email || null,
           image: profile.avatar_url,
         }
       },
