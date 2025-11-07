@@ -203,7 +203,7 @@ export default function About() {
                 <div>
                   <p className="text-lg font-semibold text-black mb-1">Weekly call</p>
                   <p className="text-base text-black/70">
-                    Fridays 8–9am EST. wins → blockers → decisions → what's next.
+                    Optional.Fridays 10–10:30am ET. wins → blockers → decisions → what's next.
                   </p>
                 </div>
 
