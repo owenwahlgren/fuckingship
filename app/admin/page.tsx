@@ -1,14 +1,14 @@
-import { auth } from '@/lib/auth'
-import { prisma } from '@/lib/prisma'
-import { redirect } from 'next/navigation'
-import { AdminReviewPanel } from '@/components/AdminReviewPanel'
-import Link from 'next/link'
+import { auth } from "@/lib/auth"
+import { prisma } from "@/lib/prisma"
+import { redirect } from "next/navigation"
+import { AdminReviewPanel } from "@/components/AdminReviewPanel"
+import Link from "next/link"
 
 export default async function AdminPage() {
   const session = await auth()
 
-  if (!session?.user || session.user.role !== 'ADMIN') {
-    redirect('/')
+  if (!session?.user || session.user.role !== "ADMIN") {
+    redirect("/")
   }
 
   const applications = await prisma.application.findMany({
@@ -21,7 +21,7 @@ export default async function AdminPage() {
       },
     },
     orderBy: {
-      createdAt: 'desc',
+      createdAt: "desc",
     },
   })
 
@@ -34,10 +34,13 @@ export default async function AdminPage() {
             <p className="text-gray-600 text-sm mt-1">Logged in as @{session.user.twitterHandle}</p>
           </div>
           <div className="flex items-center gap-2 sm:gap-3">
-            <Link href="/about" className="text-xs sm:text-sm text-black/60 hover:text-black underline">
+            <Link
+              href="/about"
+              className="text-xs sm:text-sm text-black/60 hover:text-black underline"
+            >
               About
             </Link>
-            <Link 
+            <Link
               href="/api/signout"
               className="px-3 sm:px-4 py-2 font-medium transition-all duration-200 bg-white text-black border-2 border-black/10 hover:bg-black/5 rounded-lg text-xs sm:text-sm"
             >
@@ -51,4 +54,3 @@ export default async function AdminPage() {
     </div>
   )
 }
-

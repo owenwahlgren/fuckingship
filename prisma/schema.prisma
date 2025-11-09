@@ -8,22 +8,22 @@ datasource db {
 }
 
 model User {
-  id            String        @id @default(cuid())
+  id            String    @id @default(cuid())
   name          String?
-  email         String?       @unique
+  email         String?   @unique
   emailVerified DateTime?
   image         String?
-  twitterId     String?       @unique
+  twitterId     String?   @unique
   twitterHandle String?
-  githubId      String?       @unique
+  githubId      String?   @unique
   githubHandle  String?
-  role          Role          @default(USER)
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-  
-  accounts      Account[]
-  sessions      Session[]
-  application   Application?
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts    Account[]
+  sessions    Session[]
+  application Application?
 }
 
 model Account {
@@ -62,21 +62,21 @@ model VerificationToken {
 }
 
 model Application {
-  id              String            @id @default(cuid())
-  userId          String            @unique
-  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  githubHandle    String
-  whatYouShipped  String            @db.Text
-  proofOfWork     String            @db.Text
-  whatYouWillBuild String           @db.Text
-  role            String
-  whyAvalanche    String            @db.Text
-  status          ApplicationStatus @default(PENDING)
-  submittedAt     DateTime?
-  reviewedAt      DateTime?
-  reviewedBy      String?
-  createdAt       DateTime          @default(now())
-  updatedAt       DateTime          @updatedAt
+  id               String            @id @default(cuid())
+  userId           String            @unique
+  user             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  githubHandle     String
+  whatYouShipped   String            @db.Text
+  proofOfWork      String            @db.Text
+  whatYouWillBuild String            @db.Text
+  role             String
+  whyAvalanche     String            @db.Text
+  status           ApplicationStatus @default(PENDING)
+  submittedAt      DateTime?
+  reviewedAt       DateTime?
+  reviewedBy       String?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
 }
 
 enum Role {
@@ -90,4 +90,3 @@ enum ApplicationStatus {
   APPROVED
   REJECTED
 }
-

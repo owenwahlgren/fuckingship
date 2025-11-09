@@ -1,32 +1,32 @@
-import { ImageResponse } from 'next/og'
+import { ImageResponse } from "next/og"
 
-export const runtime = 'edge'
-export const alt = 'About fuckingship'
+export const runtime = "edge"
+export const alt = "About fuckingship"
 export const size = {
   width: 1200,
   height: 630,
 }
-export const contentType = 'image/png'
+export const contentType = "image/png"
 
 export default async function Image() {
   return new ImageResponse(
     (
       <div
         style={{
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          backgroundColor: 'white',
-          padding: '100px',
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          backgroundColor: "white",
+          padding: "100px",
         }}
       >
         <div
           style={{
             fontSize: 72,
             fontWeight: 700,
-            color: 'black',
+            color: "black",
             marginBottom: 24,
           }}
         >
@@ -36,14 +36,14 @@ export default async function Image() {
           style={{
             height: 4,
             width: 96,
-            backgroundColor: '#E84142',
+            backgroundColor: "#E84142",
             marginBottom: 48,
           }}
         />
         <div
           style={{
             fontSize: 38,
-            color: 'black',
+            color: "black",
             lineHeight: 1.4,
           }}
         >
@@ -52,7 +52,7 @@ export default async function Image() {
         <div
           style={{
             fontSize: 34,
-            color: '#666',
+            color: "#666",
             marginTop: 32,
             fontWeight: 600,
           }}
@@ -64,4 +64,3 @@ export default async function Image() {
     size
   )
 }
-

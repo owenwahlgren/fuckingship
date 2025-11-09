@@ -59,11 +59,12 @@ export default function Dashboard() {
           <div className="flex justify-between items-center mb-2">
             <div>
               <div className="flex items-baseline gap-3">
-                <h1 className="text-4xl font-bold text-black tracking-tight">
-                f🔻ckingship
-                </h1>
+                <h1 className="text-4xl font-bold text-black tracking-tight">f🔻ckingship</h1>
                 {!application && (
-                  <Link href="/about" className="text-sm text-black/50 hover:text-black underline transition-colors">
+                  <Link
+                    href="/about"
+                    className="text-sm text-black/50 hover:text-black underline transition-colors"
+                  >
                     About
                   </Link>
                 )}
@@ -77,18 +78,28 @@ export default function Dashboard() {
               )}
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
-              {user?.role === 'ADMIN' && (
-                <Link href="/admin" className="text-xs sm:text-sm text-black/60 hover:text-black underline transition-colors">
+              {user?.role === "ADMIN" && (
+                <Link
+                  href="/admin"
+                  className="text-xs sm:text-sm text-black/60 hover:text-black underline transition-colors"
+                >
                   Admin Panel
                 </Link>
               )}
-              <Button variant="outline" onClick={handleSignOut} className="text-xs sm:text-sm px-3 sm:px-4">
+              <Button
+                variant="outline"
+                onClick={handleSignOut}
+                className="text-xs sm:text-sm px-3 sm:px-4"
+              >
                 Sign Out
               </Button>
             </div>
           </div>
           {application && (
-            <Link href="/about" className="text-sm text-black/50 hover:text-black underline transition-colors">
+            <Link
+              href="/about"
+              className="text-sm text-black/50 hover:text-black underline transition-colors"
+            >
               About
             </Link>
           )}
@@ -97,7 +108,11 @@ export default function Dashboard() {
         {application && !isEditing ? (
           <ApplicationStatus application={application} onEdit={() => setIsEditing(true)} />
         ) : (
-          <ApplicationForm initialData={application} isEdit={!!application} githubHandle={user?.githubHandle} />
+          <ApplicationForm
+            initialData={application}
+            isEdit={!!application}
+            githubHandle={user?.githubHandle}
+          />
         )}
       </div>
     </div>

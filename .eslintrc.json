@@ -1,7 +1,29 @@
 {
-  "extends": "next/core-web-vitals",
-  "rules": {
-    "react/no-unescaped-entities": "off"
-  }
+ "extends": [
+   "eslint:recommended",
+   "next/core-web-vitals"
+ ],
+ "rules": {
+   "react/no-unescaped-entities": "off",
+   "no-unused-vars": [
+     "warn",
+     {
+       "args": "after-used",
+       "argsIgnorePattern": "^_",
+       "varsIgnorePattern": "^_"
+     }
+   ],
+   "eqeqeq": [
+     "error",
+     "always"
+   ],
+   "prefer-const": [
+     "error",
+     {
+       "destructuring": "all"
+     }
+    ],
+    "no-var": "error"
+ }
 }
 
