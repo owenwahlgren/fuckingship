@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ApplicationForm } from '@/components/application-form'
+import { ApplicationForm } from '@/components/application/application-form'
 import { ApplicationStatus } from '@/components/application/application-status'
-import { Button } from '@/components/ui/Button'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 export default function Dashboard() {
