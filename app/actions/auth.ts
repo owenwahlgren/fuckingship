@@ -1,12 +1,11 @@
-'use server'
+"use server"
 
-import { signIn } from '@/lib/auth'
+import { signIn } from "@/lib/auth"
 
 export async function connectGitHub() {
-  await signIn('github', { redirectTo: '/' })
+  await signIn("github", { redirectTo: "/" })
 }
 
 export async function connectTwitter() {
-  await signIn('twitter', { redirectTo: '/' })
+  await signIn("twitter", { redirectTo: "/" })
 }
-

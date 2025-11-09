@@ -1,10 +1,10 @@
-'use client'
+"use client"
 
-import { Button } from './ui/Button'
-import { connectGitHub, connectTwitter } from '@/app/actions/auth'
+import { Button } from "@/components/ui/Button"
+import { connectGitHub, connectTwitter } from "@/app/actions/auth"
 
 interface ConnectButtonProps {
-  provider: 'twitter' | 'github'
+  provider: "twitter" | "github"
 }
 
 // Simple SVG icons
@@ -23,29 +23,27 @@ const GitHubIcon = () => (
 export function ConnectButton({ provider }: ConnectButtonProps) {
   const handleConnect = async () => {
     try {
-      if (provider === 'github') {
+      if (provider === "github") {
         await connectGitHub()
       } else {
         await connectTwitter()
       }
     } catch (error) {
       // The signIn function throws a redirect, which is expected
-      console.log('Starting OAuth flow...')
+      console.log("Starting OAuth flow...")
     }
   }
 
-  const isTwitter = provider === 'twitter'
+  const isTwitter = provider === "twitter"
 
   return (
-    <Button 
-      variant={isTwitter ? 'primary' : 'outline'} 
+    <Button
+      variant={isTwitter ? "primary" : "outline"}
       onClick={handleConnect}
       className="w-full justify-center"
     >
       {isTwitter ? <XIcon /> : <GitHubIcon />}
-      <span>{isTwitter ? 'Connect X' : 'Connect GitHub'}</span>
+      <span>{isTwitter ? "Connect X" : "Connect GitHub"}</span>
     </Button>
   )
 }
-
-

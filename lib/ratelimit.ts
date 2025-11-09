@@ -5,7 +5,11 @@ type RateLimitStore = {
 
 const store = new Map<string, RateLimitStore>()
 
-export function rateLimit(ip: string, limit: number = 5, windowMs: number = 10 * 60 * 1000): boolean {
+export function rateLimit(
+  ip: string,
+  limit: number = 5,
+  windowMs: number = 10 * 60 * 1000
+): boolean {
   const now = Date.now()
   const record = store.get(ip)
 
@@ -31,4 +35,3 @@ setInterval(() => {
     }
   }
 }, 60 * 1000) // Clean up every minute
-

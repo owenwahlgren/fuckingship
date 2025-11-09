@@ -3,10 +3,10 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Button } from "./ui/Button"
-import { Textarea } from "./ui/Textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/Card"
-import { Toast } from "./ui/Toast"
+import { Button } from "@/components/ui/Button"
+import { Textarea } from "@/components/ui/Textarea"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
+import { Toast } from "@/components/ui/Toast"
 
 interface ApplicationFormProps {
   initialData?: {
@@ -21,7 +21,11 @@ interface ApplicationFormProps {
   githubHandle?: string
 }
 
-export function ApplicationForm({ initialData, isEdit = false, githubHandle }: ApplicationFormProps) {
+export function ApplicationForm({
+  initialData,
+  isEdit = false,
+  githubHandle,
+}: ApplicationFormProps) {
   const [formData, setFormData] = useState({
     whatYouShipped: initialData?.whatYouShipped || "",
     whatYouWillBuild: initialData?.whatYouWillBuild || "",
@@ -36,7 +40,7 @@ export function ApplicationForm({ initialData, isEdit = false, githubHandle }: A
 
   const validateForm = () => {
     const errors: Record<string, string> = {}
-    
+
     if (!formData.whatYouShipped.trim()) {
       errors.whatYouShipped = "Please tell us what you've shipped recently"
     }
@@ -52,7 +56,7 @@ export function ApplicationForm({ initialData, isEdit = false, githubHandle }: A
     if (!formData.whyAvalanche.trim()) {
       errors.whyAvalanche = "Please tell us why Avalanche"
     }
-    
+
     setFieldErrors(errors)
     return Object.keys(errors).length === 0
   }
@@ -61,12 +65,12 @@ export function ApplicationForm({ initialData, isEdit = false, githubHandle }: A
     e.preventDefault()
     setError("")
     setFieldErrors({})
-    
+
     if (!validateForm()) {
       setError("Please fill out all required fields")
       return
     }
-    
+
     setLoading(true)
 
     try {
@@ -96,93 +100,89 @@ export function ApplicationForm({ initialData, isEdit = false, githubHandle }: A
   return (
     <>
       {success && (
-        <Toast 
+        <Toast
           message={`Application ${isEdit ? "updated" : "submitted"} successfully!`}
           type="success"
           onClose={() => setSuccess(false)}
         />
       )}
-      
-      {error && (
-        <Toast 
-          message={error}
-          type="error"
-          onClose={() => setError('')}
-        />
-      )}
+
+      {error && <Toast message={error} type="error" onClose={() => setError("")} />}
 
       <Card className="border-gray-200">
         <CardHeader>
-          <CardTitle className="text-black text-2xl">{isEdit ? "Edit Application" : "Submit Application"}</CardTitle>
+          <CardTitle className="text-black text-2xl">
+            {isEdit ? "Edit Application" : "Submit Application"}
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
-          <Textarea
-            label="What have you shipped in the last 60 days?"
-            placeholder="Deployed contracts, live products, infra you're running, etc. Include links."
-            value={formData.whatYouShipped}
-            onChange={(e) => {
-              setFormData({ ...formData, whatYouShipped: e.target.value })
-              setFieldErrors({ ...fieldErrors, whatYouShipped: '' })
-            }}
-            error={fieldErrors.whatYouShipped}
-            disabled={loading}
-          />
+            <Textarea
+              label="What have you shipped in the last 60 days?"
+              placeholder="Deployed contracts, live products, infra you're running, etc. Include links."
+              value={formData.whatYouShipped}
+              onChange={e => {
+                setFormData({ ...formData, whatYouShipped: e.target.value })
+                setFieldErrors({ ...fieldErrors, whatYouShipped: "" })
+              }}
+              error={fieldErrors.whatYouShipped}
+              disabled={loading}
+            />
 
-          <Textarea
-            label="Proof of Work"
-            placeholder="Contract addresses on mainnet, live URLs, subnet IDs, node IDs, GitHub repos with recent commits, etc."
-            value={formData.proofOfWork}
-            onChange={(e) => {
-              setFormData({ ...formData, proofOfWork: e.target.value })
-              setFieldErrors({ ...fieldErrors, proofOfWork: '' })
-            }}
-            error={fieldErrors.proofOfWork}
-            disabled={loading}
-          />
+            <Textarea
+              label="Proof of Work"
+              placeholder="Contract addresses on mainnet, live URLs, subnet IDs, node IDs, GitHub repos with recent commits, etc."
+              value={formData.proofOfWork}
+              onChange={e => {
+                setFormData({ ...formData, proofOfWork: e.target.value })
+                setFieldErrors({ ...fieldErrors, proofOfWork: "" })
+              }}
+              error={fieldErrors.proofOfWork}
+              disabled={loading}
+            />
 
-          <Textarea
-            label="What will you ship in your first 14 days?"
-            placeholder="Be specific. What user-visible product or feature will you demo?"
-            value={formData.whatYouWillBuild}
-            onChange={(e) => {
-              setFormData({ ...formData, whatYouWillBuild: e.target.value })
-              setFieldErrors({ ...fieldErrors, whatYouWillBuild: '' })
-            }}
-            error={fieldErrors.whatYouWillBuild}
-            disabled={loading}
-          />
+            <Textarea
+              label="What will you ship in your first 14 days?"
+              placeholder="Be specific. What user-visible product or feature will you demo?"
+              value={formData.whatYouWillBuild}
+              onChange={e => {
+                setFormData({ ...formData, whatYouWillBuild: e.target.value })
+                setFieldErrors({ ...fieldErrors, whatYouWillBuild: "" })
+              }}
+              error={fieldErrors.whatYouWillBuild}
+              disabled={loading}
+            />
 
-          <Textarea
-            label="Your role / what you do"
-            placeholder="e.g. Smart contracts, frontend, infra, product, growth, design..."
-            value={formData.role}
-            onChange={(e) => {
-              setFormData({ ...formData, role: e.target.value })
-              setFieldErrors({ ...fieldErrors, role: '' })
-            }}
-            error={fieldErrors.role}
-            disabled={loading}
-          />
+            <Textarea
+              label="Your role / what you do"
+              placeholder="e.g. Smart contracts, frontend, infra, product, growth, design..."
+              value={formData.role}
+              onChange={e => {
+                setFormData({ ...formData, role: e.target.value })
+                setFieldErrors({ ...fieldErrors, role: "" })
+              }}
+              error={fieldErrors.role}
+              disabled={loading}
+            />
 
-          <Textarea
-            label="Why Avalanche C-Chain specifically?"
-            placeholder="What makes you want to build on AVAX vs other chains?"
-            value={formData.whyAvalanche}
-            onChange={(e) => {
-              setFormData({ ...formData, whyAvalanche: e.target.value })
-              setFieldErrors({ ...fieldErrors, whyAvalanche: '' })
-            }}
-            error={fieldErrors.whyAvalanche}
-            disabled={loading}
-          />
+            <Textarea
+              label="Why Avalanche C-Chain specifically?"
+              placeholder="What makes you want to build on AVAX vs other chains?"
+              value={formData.whyAvalanche}
+              onChange={e => {
+                setFormData({ ...formData, whyAvalanche: e.target.value })
+                setFieldErrors({ ...fieldErrors, whyAvalanche: "" })
+              }}
+              error={fieldErrors.whyAvalanche}
+              disabled={loading}
+            />
 
-          <Button type="submit" disabled={loading} className="w-full">
-            {loading ? "Submitting..." : isEdit ? "Update Application" : "Submit Application"}
-          </Button>
-        </form>
-      </CardContent>
-    </Card>
+            <Button type="submit" disabled={loading} className="w-full">
+              {loading ? "Submitting..." : isEdit ? "Update Application" : "Submit Application"}
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
     </>
   )
 }
