@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ConnectButton } from '@/components/ConnectButton'
+import { ConnectButton } from '@/components/connect-button'
 import { Button } from '@/components/ui/Button'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'

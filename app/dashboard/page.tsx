@@ -1,10 +1,10 @@
-"use client"
+'use client'
 
-import { useEffect, useState } from "react"
-import { ApplicationForm } from "@/components/ApplicationForm"
-import { ApplicationStatus } from "@/components/ApplicationStatus"
-import { Button } from "@/components/ui/Button"
-import Link from "next/link"
+import { useEffect, useState } from 'react'
+import { ApplicationForm } from '@/components/application-form'
+import { ApplicationStatus } from '@/components/application/application-status'
+import { Button } from '@/components/ui/Button'
+import Link from 'next/link'
 
 export default function Dashboard() {
   const [user, setUser] = useState<any>(null)
@@ -16,23 +16,23 @@ export default function Dashboard() {
     async function loadData() {
       try {
         // Fetch fresh session data from database
-        const sessionRefresh = await fetch("/api/session/refresh")
+        const sessionRefresh = await fetch('/api/session/refresh')
         if (sessionRefresh.ok) {
           const freshData = await sessionRefresh.json()
           setUser(freshData)
         } else {
           // Fallback to regular session
-          const sessionRes = await fetch("/api/auth/session")
+          const sessionRes = await fetch('/api/auth/session')
           const sessionData = await sessionRes.json()
           setUser(sessionData.user)
         }
 
         // Fetch application
-        const appRes = await fetch("/api/application")
+        const appRes = await fetch('/api/application')
         const appData = await appRes.json()
         setApplication(appData.application)
       } catch (error) {
-        console.error("Error loading data:", error)
+        console.error('Error loading data:', error)
       } finally {
         setLoading(false)
       }
@@ -41,7 +41,7 @@ export default function Dashboard() {
   }, [])
 
   const handleSignOut = () => {
-    window.location.href = "/api/signout"
+    window.location.href = '/api/signout'
   }
 
   if (loading) {
@@ -59,11 +59,12 @@ export default function Dashboard() {
           <div className="flex justify-between items-center mb-2">
             <div>
               <div className="flex items-baseline gap-3">
-                <h1 className="text-4xl font-bold text-black tracking-tight">
-                f🔻ckingship
-                </h1>
+                <h1 className="text-4xl font-bold text-black tracking-tight">f🔻ckingship</h1>
                 {!application && (
-                  <Link href="/about" className="text-sm text-black/50 hover:text-black underline transition-colors">
+                  <Link
+                    href="/about"
+                    className="text-sm text-black/50 hover:text-black underline transition-colors"
+                  >
                     About
                   </Link>
                 )}
@@ -71,24 +72,34 @@ export default function Dashboard() {
               {user && (
                 <p className="text-gray-600 text-sm mt-2">
                   {user.twitterHandle && `@${user.twitterHandle}`}
-                  {user.twitterHandle && user.githubHandle && " • "}
+                  {user.twitterHandle && user.githubHandle && ' • '}
                   {user.githubHandle && `${user.githubHandle}`}
                 </p>
               )}
             </div>
             <div className="flex items-center gap-2 sm:gap-3">
               {user?.role === 'ADMIN' && (
-                <Link href="/admin" className="text-xs sm:text-sm text-black/60 hover:text-black underline transition-colors">
+                <Link
+                  href="/admin"
+                  className="text-xs sm:text-sm text-black/60 hover:text-black underline transition-colors"
+                >
                   Admin Panel
                 </Link>
               )}
-              <Button variant="outline" onClick={handleSignOut} className="text-xs sm:text-sm px-3 sm:px-4">
+              <Button
+                variant="outline"
+                onClick={handleSignOut}
+                className="text-xs sm:text-sm px-3 sm:px-4"
+              >
                 Sign Out
               </Button>
             </div>
           </div>
           {application && (
-            <Link href="/about" className="text-sm text-black/50 hover:text-black underline transition-colors">
+            <Link
+              href="/about"
+              className="text-sm text-black/50 hover:text-black underline transition-colors"
+            >
               About
             </Link>
           )}
@@ -97,7 +108,11 @@ export default function Dashboard() {
         {application && !isEditing ? (
           <ApplicationStatus application={application} onEdit={() => setIsEditing(true)} />
         ) : (
-          <ApplicationForm initialData={application} isEdit={!!application} githubHandle={user?.githubHandle} />
+          <ApplicationForm
+            initialData={application}
+            isEdit={!!application}
+            githubHandle={user?.githubHandle}
+          />
         )}
       </div>
     </div>
