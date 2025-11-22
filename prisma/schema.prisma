@@ -91,3 +91,60 @@ enum ApplicationStatus {
   REJECTED
 }
 
+model Builder {
+  id           String   @id @default(cuid())
+  telegramId   String   @unique
+  username     String
+  firstName    String?
+  lastName     String?
+  twitterHandle String? // Added for linking to Twitter
+  messageCount Int      @default(0)
+  shipCount    Int      @default(0)
+  lastShipAt   DateTime?
+
+  ships        Ship[]
+  messages     Message[]
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Message {
+  id                String   @id @default(cuid())
+  telegramMessageId Int      @unique
+  builderId         String
+  builder           Builder  @relation(fields: [builderId], references: [id], onDelete: Cascade)
+
+  content           String
+  isShip            Boolean  @default(false)
+  aiSummary         String?
+  ship              Ship?
+
+  timestamp         DateTime
+  createdAt         DateTime @default(now())
+
+  @@index([timestamp])
+}
+
+model Ship {
+  id          String   @id @default(cuid())
+  builderId   String
+  builder     Builder  @relation(fields: [builderId], references: [id], onDelete: Cascade)
+
+  messageId   String   @unique
+  message     Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+
+  description String
+  proofUrl    String?
+  nextSteps   String?
+
+  createdAt   DateTime @default(now())
+}
+
+model DailySummary {
+  id        String   @id @default(cuid())
+  date      DateTime @unique
+  tweetText String
+  ships     Json
+  createdAt DateTime @default(now())
+}

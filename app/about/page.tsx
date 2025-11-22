@@ -201,9 +201,9 @@ export default function About() {
 
               <div className="space-y-6">
                 <div>
-                  <p className="text-lg font-semibold text-black mb-1">Weekly call</p>
+                  <p className="text-lg font-semibold text-black mb-1">Workshops & Feedback Sessions</p>
                   <p className="text-base text-black/70">
-                    Optional.Fridays 10–10:30am ET. wins → blockers → decisions → what's next.
+                    Optional. Wednesdays 9:30am ET. Product reviews, technical feedback, and collaborative problem-solving.
                   </p>
                 </div>
 
