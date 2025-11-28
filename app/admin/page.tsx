@@ -1,7 +1,7 @@
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { redirect } from 'next/navigation'
-import { AdminReviewPanel } from '@/components/AdminReviewPanel'
+import { AdminReviewPanel } from '@/components/admin/admin-review-panel'
 import Link from 'next/link'
 
 export default async function AdminPage() {

@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from './ui/Card'
-import { Button } from './ui/Button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 
 interface Application {
@@ -22,7 +22,7 @@ interface ApplicationStatusProps {
 
 export function ApplicationStatus({ application, onEdit }: ApplicationStatusProps) {
   const [deleting, setDeleting] = useState(false)
-  
+
   const statusColors = {
     DRAFT: 'text-gray-500',
     PENDING: 'text-yellow-600',
@@ -72,18 +72,28 @@ export function ApplicationStatus({ application, onEdit }: ApplicationStatusProp
       <CardContent>
         <div className="space-y-6">
           <div>
-            <h3 className="font-semibold text-sm text-gray-600 mb-2">What you shipped (last 60 days)</h3>
-            <p className="whitespace-pre-wrap text-black leading-relaxed">{application.whatYouShipped}</p>
+            <h3 className="font-semibold text-sm text-gray-600 mb-2">
+              What you shipped (last 60 days)
+            </h3>
+            <p className="whitespace-pre-wrap text-black leading-relaxed">
+              {application.whatYouShipped}
+            </p>
           </div>
 
           <div>
             <h3 className="font-semibold text-sm text-gray-600 mb-2">Proof of Work</h3>
-            <p className="whitespace-pre-wrap text-black leading-relaxed">{application.proofOfWork}</p>
+            <p className="whitespace-pre-wrap text-black leading-relaxed">
+              {application.proofOfWork}
+            </p>
           </div>
 
           <div>
-            <h3 className="font-semibold text-sm text-gray-600 mb-2">What you'll ship (first 14 days)</h3>
-            <p className="whitespace-pre-wrap text-black leading-relaxed">{application.whatYouWillBuild}</p>
+            <h3 className="font-semibold text-sm text-gray-600 mb-2">
+              What you'll ship (first 14 days)
+            </h3>
+            <p className="whitespace-pre-wrap text-black leading-relaxed">
+              {application.whatYouWillBuild}
+            </p>
           </div>
 
           <div>
@@ -93,7 +103,9 @@ export function ApplicationStatus({ application, onEdit }: ApplicationStatusProp
 
           <div>
             <h3 className="font-semibold text-sm text-gray-600 mb-2">Why Avalanche C-Chain?</h3>
-            <p className="whitespace-pre-wrap text-black leading-relaxed">{application.whyAvalanche}</p>
+            <p className="whitespace-pre-wrap text-black leading-relaxed">
+              {application.whyAvalanche}
+            </p>
           </div>
 
           {application.submittedAt && (
@@ -106,7 +118,16 @@ export function ApplicationStatus({ application, onEdit }: ApplicationStatusProp
           {isApproved && (
             <div className="pt-6 border-t border-gray-200 bg-green-50 -mx-6 -mb-6 px-6 pb-6">
               <p className="text-sm text-green-800 font-medium">
-                ✓ Application approved! <a href="https://x.com/freakingship" target="_blank" rel="noopener noreferrer" className="underline hover:text-green-900">@freakingship</a> will reach out to you on X with further details.
+                ✓ Application approved!{' '}
+                <a
+                  href="https://x.com/freakingship"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-green-900"
+                >
+                  @freakingship
+                </a>{' '}
+                will reach out to you on X with further details.
               </p>
             </div>
           )}
@@ -122,9 +143,10 @@ export function ApplicationStatus({ application, onEdit }: ApplicationStatusProp
           {isRejected && (
             <div className="pt-6 border-t border-gray-200">
               <p className="text-sm text-black/60 mb-4">
-                Your application was not accepted. You can delete this application then reapply after 14 days.
+                Your application was not accepted. You can delete this application then reapply
+                after 14 days.
               </p>
-              <Button 
+              <Button
                 onClick={handleDelete}
                 disabled={deleting}
                 className="w-full bg-red-600 text-white hover:bg-red-700"

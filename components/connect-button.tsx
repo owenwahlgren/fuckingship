@@ -1,6 +1,6 @@
 'use client'
 
-import { Button } from './ui/Button'
+import { Button } from '@/components/ui/button'
 import { connectGitHub, connectTwitter } from '@/app/actions/auth'
 
 interface ConnectButtonProps {
@@ -37,8 +37,8 @@ export function ConnectButton({ provider }: ConnectButtonProps) {
   const isTwitter = provider === 'twitter'
 
   return (
-    <Button 
-      variant={isTwitter ? 'primary' : 'outline'} 
+    <Button
+      variant={isTwitter ? 'primary' : 'outline'}
       onClick={handleConnect}
       className="w-full justify-center"
     >
@@ -47,5 +47,3 @@ export function ConnectButton({ provider }: ConnectButtonProps) {
     </Button>
   )
 }
-
-

@@ -3,10 +3,10 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Button } from "./ui/Button"
-import { Textarea } from "./ui/Textarea"
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/Card"
-import { Toast } from "./ui/Toast"
+import { Button } from '@/components/ui/button'
+import { Textarea } from '@/components/ui/textarea'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Toast } from '@/components/ui/toast'
 
 interface ApplicationFormProps {
   initialData?: {
